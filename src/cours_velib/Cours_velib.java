@@ -7,11 +7,13 @@ package cours_velib;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import velibXSD.Carto;
+import velibXSD.Carto.Markers.Marker;
 
 /**
  *
@@ -33,8 +35,10 @@ Marshaller a= jc.createMarshaller();
 
 
 Carto Station = (Carto)u.unmarshal(new FileInputStream("C:\\Users\\Sephi\\Documents\\cours_epsi\\Cours I4\\Web_Service\\VelibApp\\cours_webservicevelib\\src\\cours_velib\\velibDataXML.xml"));
-System.out.println("Adresse de la station :" +Station.getMarkers().getMarker().get(0).getName());
-System.out.println("Adresse de la station :" +Station.getMarkers());
+List<Marker> markers = Station.getMarkers().getMarker();
+for(Marker m : markers){
+    System.out.println(m.getName());
+}
 
     }
     
