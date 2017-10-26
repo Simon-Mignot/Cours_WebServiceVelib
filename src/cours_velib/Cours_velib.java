@@ -32,8 +32,8 @@ Unmarshaller u = jc.createUnmarshaller();
 Marshaller a= jc.createMarshaller();
 
 
-Carto Station = (Carto)u.unmarshal(new FileInputStream("C:\\Users\\Sephi\\Documents\\cours_epsi\\Cours I4\\Web_Service\\VelibApp\\src\\velibapp\\velibDataXML.xml"));
-System.out.println("Adresse de la station :" +Station.getMarkers().get(0).getMarker().getName());
+Carto Station = (Carto)u.unmarshal(new FileInputStream("C:\\Users\\Sephi\\Documents\\cours_epsi\\Cours I4\\Web_Service\\VelibApp\\cours_webservicevelib\\src\\cours_velib\\velibDataXML.xml"));
+System.out.println("Adresse de la station :" +Station.getMarkers().getMarker().get(0).getName());
 System.out.println("Adresse de la station :" +Station.getMarkers());
 
     }
