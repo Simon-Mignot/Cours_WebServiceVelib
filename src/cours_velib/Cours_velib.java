@@ -26,24 +26,6 @@ import sun.misc.IOUtils;
 public class Cours_velib
 {
 
-    static private String readInputStream(InputStream is)
-    {
-        String result = "";
-        int current = 0;
-        while(current != -1)
-        {
-            try
-            {
-                current = is.read();
-                if(current != -1)
-                    result += (char)current;
-            } catch (IOException ex)
-            {
-                Logger.getLogger(Cours_velib.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return result;
-    }
     /**
      * @param args the command line arguments
      */
