@@ -5,13 +5,12 @@
  */
 package cours_velib;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import javax.xml.bind.JAXBContext;
+import java.util.List;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import velibXSD.Carto;
+import velibXSD.Marker;
+
+
 
 /**
  *
@@ -20,14 +19,19 @@ import velibXSD.Carto;
 public class Cours_velib
 {
 
-    /**
-     * @param args the command line arguments
-     * @throws java.io.FileNotFoundException
-     * @throws javax.xml.bind.JAXBException
-     */
-    public static void main(String[] args) throws FileNotFoundException, JAXBException
+    public static void main(String[] args) throws JAXBException, FileNotFoundException
     {
-       
+        VelibUI ui = new VelibUI();
+        
+        List<Marker> markers = HTTPRequester.getStationsList();
+        for(Marker marker : markers)
+        {
+            String tmp = marker.getName();
+            String id, name;
+            id = tmp.split("-")[0].trim();
+            name = tmp.split("-")[1].trim();
+            System.out.println(id +  " <===> " + name);
+        }
     }
     
 }

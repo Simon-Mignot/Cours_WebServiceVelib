@@ -1,55 +1,46 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name="carto">
-        <xsd:complexType>
-        <xsd:sequence> 
-            <xsd:element name="markers">
-                <xsd:complexType>
-                <xsd:sequence>     
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="marker">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" name="name" use="optional"/>
+                    <xs:attribute type="xs:int" name="number" use="optional"/>
+                    <xs:attribute type="xs:string" name="address" use="optional"/>
+                    <xs:attribute type="xs:string" name="fullAddress" use="optional"/>
+                    <xs:attribute type="xs:float" name="lat" use="optional"/>
+                    <xs:attribute type="xs:float" name="lng" use="optional"/>
+                    <xs:attribute type="xs:byte" name="open" use="optional"/>
+                    <xs:attribute type="xs:byte" name="bonus" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="markers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="marker" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="carto">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="markers"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     
-                    <xsd:element  name="marker" maxOccurs="unbounded">
-                        <xsd:complexType>
-                        <xsd:sequence>
-                            <xsd:element name="name" type="xsd:string"></xsd:element>
-                            <xsd:element name="number" type="xsd:int"></xsd:element>
-                            <xsd:element name="address" type="xsd:string"></xsd:element>
-                            <xsd:element name="fullAddress" type="xsd:string"></xsd:element>
-                            <xsd:element name="lat" type="xsd:long"></xsd:element>
-                            <xsd:element name="Ing" type="xsd:long"></xsd:element>
-                            <xsd:element name="open" type="xsd:int"></xsd:element>
-                            <xsd:element name="bonus" type="xsd:int"></xsd:element>
-                        </xsd:sequence>	
-                                            </xsd:complexType>
-                    </xsd:element>
-
-
-                </xsd:sequence>
-                </xsd:complexType>
-               </xsd:element>
-                               </xsd:sequence>
-          </xsd:complexType>
-            
-            
-            <!--<xsd:element name="arrondissements">
-                <xsd:complexType>
-                <xsd:sequence>     
-  
-                    <xsd:element name="arrondissements">
-                        <xsd:complexType>
-                        <xsd:sequence>
-                            <xsd:element name="number" type="xsd:int"></xsd:element>
-                            <xsd:element name="minLat" type="xsd:long"></xsd:element>
-                            <xsd:element name="minLng" type="xsd:long"></xsd:element>
-                            <xsd:element name="maxLat" type="xsd:long"></xsd:element>
-                            <xsd:element name="maxLng" type="xsd:long"></xsd:element>
-                        </xsd:sequence>
-                    </xsd:element>
-                </xsd:sequence>
-            </xsd:element>
-            
-            
-        </xsd:sequence>
-    </xsd:element>
-</xsd:complexType>
-!-->
-</xsd:element>
-</xsd:schema>
+    <xs:element name="station">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:byte" name="available"/>
+                <xs:element type="xs:byte" name="free"/>
+                <xs:element type="xs:byte" name="total"/>
+                <xs:element type="xs:byte" name="ticket"/>
+                <xs:element type="xs:byte" name="open"/>
+                <xs:element type="xs:int" name="updated"/>
+                <xs:element type="xs:byte" name="connected"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
